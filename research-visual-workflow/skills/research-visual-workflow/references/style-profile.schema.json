@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Visual Figure Suite style profile",
+  "type": "object",
+  "required": ["schema_version", "palette"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "source_images": {"type": "array", "items": {"type": "string"}},
+    "palette": {
+      "type": "object",
+      "required": ["background", "text", "primary", "accent"],
+      "properties": {
+        "background": {"$ref": "#/$defs/color"},
+        "text": {"$ref": "#/$defs/color"},
+        "primary": {"$ref": "#/$defs/color"},
+        "accent": {"$ref": "#/$defs/color"}
+      }
+    },
+    "typography": {
+      "type": "object",
+      "properties": {"heading_font": {"type": "string"}, "body_font": {"type": "string"}}
+    },
+    "visual_notes": {
+      "type": "object",
+      "properties": {
+        "composition": {"type": ["string", "null"]},
+        "type_character": {"type": ["string", "null"]},
+        "motifs": {"type": ["string", "null"]}
+      }
+    },
+    "measurement_note": {"type": "string"}
+  },
+  "$defs": {"color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"}}
+}

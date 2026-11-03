@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "palette": {"background":"#FFFFFF","text":"#182E45","primary":"#315A86","accent":"#A14C62"},
+  "typography": {"heading_font":"Arial","body_font":"Arial"},
+  "visual_notes":{"composition":"White canvas, a thin axis frame, and clearly separated series."},
+  "measurement_note":"Synthetic demo palette; not measured from a reference image."
+}

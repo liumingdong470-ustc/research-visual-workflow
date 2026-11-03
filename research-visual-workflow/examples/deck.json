@@ -1,0 +1,7 @@
+{
+  "title":"Research visualization demo",
+  "slides":[
+    {"type":"title","title":"Research visualization","subtitle":"Synthetic demonstration"},
+    {"type":"bullets","title":"Review the output","bullets":["Check axis units", "Keep series labels distinct", "Preserve source data"]}
+  ]
+}
