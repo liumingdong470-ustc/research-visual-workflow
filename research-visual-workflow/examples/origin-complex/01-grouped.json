@@ -1,0 +1,49 @@
+{
+  "kind": "grouped-bar",
+  "title": "Mean and SD",
+  "categories": [
+    "B",
+    "A",
+    "C",
+    "D"
+  ],
+  "x_label": "Treatment",
+  "y_label": "Yield (mg/g)",
+  "y_range": [
+    0,
+    44
+  ],
+  "error_kind": "SD",
+  "series": [
+    {
+      "name": "Control",
+      "values": [
+        12,
+        0,
+        21,
+        28
+      ],
+      "errors": [
+        2,
+        0,
+        2.5,
+        3
+      ]
+    },
+    {
+      "name": "Treated",
+      "values": [
+        18,
+        14,
+        null,
+        33
+      ],
+      "errors": [
+        3,
+        1.5,
+        null,
+        4
+      ]
+    }
+  ]
+}

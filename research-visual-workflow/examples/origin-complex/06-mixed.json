@@ -1,0 +1,208 @@
+{
+  "kind": "panels",
+  "rows": 2,
+  "columns": 2,
+  "panels": [
+    {
+      "kind": "line",
+      "title": "Time course",
+      "x_label": "Time (min)",
+      "y_label": "Signal (a.u.)",
+      "x": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "y_range": [
+        0,
+        100
+      ],
+      "series": [
+        {
+          "name": "Control",
+          "values": [
+            5,
+            16,
+            30,
+            46,
+            54,
+            60,
+            63
+          ]
+        },
+        {
+          "name": "Treated",
+          "values": [
+            4,
+            28,
+            47,
+            61,
+            75,
+            81,
+            87
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "grouped-bar",
+      "title": "Mean and SD",
+      "categories": [
+        "B",
+        "A",
+        "C",
+        "D"
+      ],
+      "x_label": "Treatment",
+      "y_label": "Yield (mg/g)",
+      "y_range": [
+        0,
+        44
+      ],
+      "error_kind": "SD",
+      "series": [
+        {
+          "name": "Control",
+          "values": [
+            12,
+            0,
+            21,
+            28
+          ],
+          "errors": [
+            2,
+            0,
+            2.5,
+            3
+          ]
+        },
+        {
+          "name": "Treated",
+          "values": [
+            18,
+            14,
+            null,
+            33
+          ],
+          "errors": [
+            3,
+            1.5,
+            null,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "stacked-bar",
+      "title": "Fraction mass",
+      "categories": [
+        "Run 1",
+        "Run 2",
+        "Run 3",
+        "Run 4"
+      ],
+      "x_label": "Run",
+      "y_label": "Mass (mg)",
+      "y_range": [
+        0,
+        90
+      ],
+      "series": [
+        {
+          "name": "Product",
+          "values": [
+            29,
+            34,
+            39,
+            49
+          ]
+        },
+        {
+          "name": "Soluble",
+          "values": [
+            18,
+            19,
+            22,
+            20
+          ]
+        },
+        {
+          "name": "Residual",
+          "values": [
+            12,
+            16,
+            15,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "heatmap",
+      "title": "Response grid",
+      "x_label": "Time (min)",
+      "y_label": "Temperature (C)",
+      "z_label": "Response (%)",
+      "x": [
+        0,
+        5,
+        10,
+        15,
+        20
+      ],
+      "y": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ],
+      "scale": [
+        0,
+        100
+      ],
+      "matrix": [
+        [
+          0,
+          18,
+          28,
+          38,
+          48
+        ],
+        [
+          10,
+          25,
+          41,
+          55,
+          64
+        ],
+        [
+          15,
+          32,
+          null,
+          66,
+          75
+        ],
+        [
+          20,
+          40,
+          58,
+          72,
+          81
+        ],
+        [
+          27,
+          48,
+          68,
+          82,
+          94
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "stacked-bar",
+  "title": "Fraction mass",
+  "categories": [
+    "Run 1",
+    "Run 2",
+    "Run 3",
+    "Run 4"
+  ],
+  "x_label": "Run",
+  "y_label": "Mass (mg)",
+  "y_range": [
+    0,
+    90
+  ],
+  "series": [
+    {
+      "name": "Product",
+      "values": [
+        29,
+        34,
+        39,
+        49
+      ]
+    },
+    {
+      "name": "Soluble",
+      "values": [
+        18,
+        19,
+        22,
+        20
+      ]
+    },
+    {
+      "name": "Residual",
+      "values": [
+        12,
+        16,
+        15,
+        13
+      ]
+    }
+  ]
+}

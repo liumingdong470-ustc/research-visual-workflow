@@ -20,7 +20,7 @@ def build(destination):
         p = PurePosixPath(name)
         if p.is_absolute() or ".." in p.parts or "\\" in name or ":" in name:
             raise ValueError(f"Unsafe release path: {name}")
-        if name not in {"LICENSE", ".gitignore"} and p.suffix.lower() not in {".md", ".json", ".py", ".txt", ".csv"}:
+        if name not in {"LICENSE", ".gitignore"} and p.suffix.lower() not in {".md", ".json", ".py", ".ps1", ".txt", ".csv"}:
             raise ValueError(f"Release expects text files: {name}")
         if any(part in {"assets", "profiles", "inbox", "private", ".git"} for part in p.parts) or p.name in {"catalog.json", "local-setup.md", "settings.json"}:
             raise ValueError(f"Private path in release manifest: {name}")

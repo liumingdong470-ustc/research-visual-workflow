@@ -1,0 +1,49 @@
+{
+  "kind": "heatmap",
+  "title": "Signed response",
+  "x_label": "Condition index",
+  "y_label": "Sample index",
+  "z_label": "Response delta",
+  "palette": "diverging",
+  "scale": [
+    -1,
+    1
+  ],
+  "matrix": [
+    [
+      -0.8,
+      -0.6,
+      -0.2,
+      0.1,
+      0.3
+    ],
+    [
+      -0.5,
+      -0.3,
+      0,
+      0.35,
+      0.55
+    ],
+    [
+      -0.3,
+      -0.1,
+      null,
+      0.55,
+      0.72
+    ],
+    [
+      -0.1,
+      0.2,
+      0.45,
+      0.65,
+      0.82
+    ],
+    [
+      0.05,
+      0.25,
+      0.55,
+      0.8,
+      0.96
+    ]
+  ]
+}

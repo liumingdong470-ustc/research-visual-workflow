@@ -1,40 +1,40 @@
-# Research Visual Workflow｜科研图与 PPT
+# Research Visual Workflow｜科研图、Origin 与 PPT
 
-一个适用于本地 Codex 的 Skill：分析参考图、管理私有风格库、制作或修改科研图、Origin 图和可编辑 PPT。Skill 入口是 [SKILL.md](skills/research-visual-workflow/SKILL.md)。
+一个 Codex Skill，从参考图提取风格、整理私有图库，再用自己的数据制作科研图和可编辑演示稿。入口为 [SKILL.md](skills/research-visual-workflow/SKILL.md)。
 
-## 安装与调用
+| 你想做什么 | 在 Codex 发送的示例指令 |
+| --- | --- |
+| [分析参考图并入库](skills/research-visual-workflow/references/private-library.md) | `$research-visual-workflow 把附件逐张命名、打标签，说明适合的科研图和 PPT 场景，并加入我的私有库。` |
+| [科研图与投稿排版](skills/research-visual-workflow/references/publication-style.md) | `$research-visual-workflow 用附件数据做论文折线图，按目标期刊的单栏宽度导出 SVG 和 PNG。` |
+| [XRD、拉曼、FTIR](skills/research-visual-workflow/references/spectra.md) | `$research-visual-workflow 重绘附件里的 XRD 图谱，保留原始数据和缺测断线，只标我给出的峰位。` |
+| [Origin 原生图](skills/research-visual-workflow/references/origin-native.md)与[复杂多面板](skills/research-visual-workflow/references/origin-complex.md) | `$research-visual-workflow 把分组柱图和矩阵热图排成双面板。误差棒用 SD，热图区分零值与缺测。交付含数据的 OPJ、OGG 和 PNG。` |
+| [新建或修改可编辑 PPT](skills/research-visual-workflow/references/create-and-check.md#powerpoint) | `$research-visual-workflow 按参考图的配色和版式修改附件 PPT，保留可编辑文字和原生图表，另存 PPTX。` |
 
-1. 下载仓库 ZIP 并解压，保留 skills/research-visual-workflow 整个目录。把它复制到本机 Codex 用户级 Skill 目录（Windows 文档示例：%USERPROFILE%\.agents\skills\research-visual-workflow），或把解压目录交给 Codex，请它代为安装。见 [Codex Skill 说明](https://learn.chatgpt.com/docs/build-skills)。
-2. 用 Python 3.10+；需要执行脚本时，在 Skill 目录运行 python -m pip install -r requirements.txt。Origin 自动导出另需兼容 Origin 和 originpro。
-3. 新建本地对话，上传材料，点名 Skill：
+## 安装和使用
 
-~~~text
-$research-visual-workflow 把附件逐张加入我的私有参考库；记录配色、用途和检索标签。
-~~~
+1. 在 GitHub 选择 **Code → Download ZIP** 并解压。将 `skills/research-visual-workflow` 整个文件夹复制到 `~/.agents/skills/`。Windows 的目标目录为 `%USERPROFILE%\.agents\skills\research-visual-workflow`。[Codex Skill 安装说明](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills)
+2. 在解压后的仓库根目录运行 `python -m pip install -r skills/research-visual-workflow/requirements.txt`。下文的 `python` 指 Python 3.10 或更新版本。若 `python --version` 显示旧版，可把解压目录交给 Codex，并发送「请用本机已有的 Python 3.12 安装这个 Skill 的依赖」。生成原生 Origin 工程还需要 Windows 和本机安装的 Origin。
+3. 打开 Codex 对话，上传数据或可分享的参考图，再发送上表的对应指令。如果列表里还没有出现该 Skill，重启 Codex。
 
-~~~text
-$research-visual-workflow 用附件数据画科研图，参考我本地库的风格，输出 SVG 和 PNG。
-~~~
+## 用合成数据试跑
 
-~~~text
-$research-visual-workflow 根据附件修改现有 PPT，另存为可编辑 PPTX。
-~~~
+在完整仓库根目录运行。第一条生成论文图预览，第二条检查混合多面板输入。若已安装可用的 Origin，去掉第二条的 `--dry-run` 即可导出原生工程。
 
-## 如何增加参考材料
+```powershell
+python skills/research-visual-workflow/scripts/plot_csv.py --csv examples/data.csv --x time --y control --y treatment --x-label "Time (min)" --y-label "Response (a.u.)" --width-mm 89 --height-mm 55 --font-size 7 --output outputs/paper.svg
+python skills/research-visual-workflow/scripts/origin_complex.py --spec examples/origin-complex/06-mixed.json --output-dir outputs/demo-origin --dry-run
+```
 
-- **适合会话分析的图片：** 拖进 Codex，发送上面的入库指令。首次如要复用旧库，提供旧库的本地路径。
-- **只留在本机的图片：** 按 [本地图库流程](skills/research-visual-workflow/references/private-library.md) 建立投递文件夹。放入图片，运行 python scripts/private_refs.py add --inbox。本地脚本读图并写入 SQLite，无需给对话上传图片。
+[`examples/`](examples/) 还包含三种合成图谱、六个复杂 Origin 输入，以及基础 PPT 的页面与风格配置。
 
-真实图库和公开仓库分开。图库路径和个人设置不要提交；这不是加密工具，也不会改变 Codex 对话的数据处理方式。需要仅本地处理时，直接在本机终端运行投递脚本。
+## 本地增加参考图
+
+可以在 Codex 用第一条指令逐张入库。仅在本机处理时，从已安装的 Skill 目录运行 `python scripts/private_refs.py inbox`，把图片放进返回的目录，再运行 `python scripts/private_refs.py add --inbox`。已有图库可直接绑定到仓库外的路径。[本地图库流程](skills/research-visual-workflow/references/private-library.md)
 
 ## 上传到 GitHub
 
-1. 从检查过的发布 ZIP 解压到新目录；只选该包里的内容，保持 skills/ 的层级。
-2. 在 GitHub 选 **New repository**，建议命名 research-visual-workflow，并选择所需可见性。[创建仓库](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
-3. 在仓库选择 **Add file → Upload files**（空仓库可从上传现有文件入口进入），上传解压后的内容并提交。确认仓库中能看到 skills/research-visual-workflow/SKILL.md。[上传文件](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
+1. 解压经过检查的发布 ZIP，打开其中包含 `README.md` 的 `research-visual-workflow` 文件夹。
+2. 在 GitHub 新建公开仓库，选择 **Add file → Upload files**（新建的空仓库可用上传现有文件入口）。上传该文件夹**里面**的全部内容并保留目录结构，包括 `.gitignore`。[GitHub 上传指南](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
+3. 提交后，确认首页显示本说明，且能打开 `skills/research-visual-workflow/SKILL.md`。把仓库链接分享给同学即可。
 
-重新打包时，从仓库根目录运行 python scripts/build_release.py --output ../research-visual-workflow-public.zip。仅发布清单中的文本文件；发布前仍需检查修改过的内容。将参考材料、索引、缓存和生成成果留在本机私有位置。
-
-## 公共示例
-
-examples/ 中的表格、风格和演示稿说明均为合成示例。通用辅助脚本保留 Visual Figure Suite 的 MIT 许可。
+公开包仅包含代码、文档和合成示例。修改后从仓库根目录运行 `python scripts/build_release.py --output ../research-visual-workflow-public.zip`，按发布清单重新打包并复核内容。

@@ -1,15 +1,16 @@
 ---
 name: research-visual-workflow
-description: Analyze reference images, add them to a private local style library, and reuse their visual rules when creating or revising research plots, Origin figures, or editable PowerPoint decks.
+description: Analyze and privately catalog visual references, create or revise publication figures and editable PowerPoint, and generate native Origin OPJ/OGG graphs. Use for XRD, Raman, FTIR, grouped bars with error bars, stacked bars, matrix heatmaps, mixed multi-panel figures, or journal-style comparisons.
 ---
 
 # 科研图与 PPT 工作流
 
 ## 先选任务
 
-- **分析参考图**：输出 Markdown 视觉说明与 JSON 配色。用户明确说“入库”时才写图库。
-- **加入私有库**：使用 [本地图库流程](references/private-library.md)，每张独立入库，可返回记录 ID。
-- **绘制或修改科研图、Origin 图、PPT**：查找合适风格，按 [制作与验证](references/create-and-check.md) 交付。
+- **参考图与风格库**：逐张写 Markdown 说明，记录配色、构图、标签及适用场景，按需给出 JSON 风格配置。用户明确要求入库时，按 [本地图库流程](references/private-library.md) 保存并返回记录 ID。
+- **科研图与投稿**：普通折线、散点和数据图按 [制作与验证](references/create-and-check.md)。XRD、拉曼、FTIR 读 [图谱编辑](references/spectra.md)。投稿或样式对照读 [论文图规范](references/publication-style.md)。
+- **原生 Origin**：需直接打开编辑或解析已有工程时读 [原生 Origin 交付](references/origin-native.md)。分组及堆叠柱、对称误差棒、矩阵热图、混合多面板再读 [复杂 Origin 图](references/origin-complex.md)。图谱同时核对图谱说明。
+- **新建或修改 PPT**：按 [制作与验证](references/create-and-check.md#powerpoint) 保留可编辑对象。复用已确认的配色与版式，已有稿另存新版。
 
 ## 保护私有材料
 
